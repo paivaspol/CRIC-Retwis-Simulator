@@ -1,0 +1,19 @@
+set term postscript eps enhanced "Helvetica" 28 color dl 4
+# set size 1.5,1.5
+set out 'cdf_rel_latency_difference.ps'
+#set term post enh solid color
+#set terminal jpeg
+#set out '.jpeg'
+set size ratio 0.5
+set xlabel 'Relative Latency Difference'
+set ylabel 'CDF across users'
+set xtics rotate
+set grid
+set key bottom right
+set xrange[0:0.35]
+# set key box
+set key font ",21"
+plot 'cdf_latency_rel_diff_write_at_least_100.txt' using 4:5 title "Posts, #(follower) >= 100" w l lt 2 lc 1 lw 8,\
+'cdf_latency_rel_diff_write_at_least_250.txt' using 4:5 title "Posts, #(follower) >= 250" w l lt 4 lc 3 lw 8,\
+'cdf_latency_rel_diff_read_at_least_100.txt' using 4:5 title "Reads, #(followee) >= 200" w l lt 1 lc 4 lw 8,\
+'cdf_latency_rel_diff_read_at_least_250.txt' using 4:5 title "Reads, #(followee) >= 500" w l lt 3 lc 5 lw 8,\
